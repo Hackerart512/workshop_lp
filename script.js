@@ -12,10 +12,10 @@ document.addEventListener('DOMContentLoaded', () => {
 function initCountdownTimer() {
     let totalSeconds = 14 * 60 + 52;
 
+    const daysEl = document.getElementById('timer-days');
     const hoursEl = document.getElementById('timer-hours');
     const minutesEl = document.getElementById('timer-minutes');
     const secondsEl = document.getElementById('timer-seconds');
-    const stickyMins = document.getElementById('sticky-mins');
     const stickySecs = document.getElementById('sticky-secs');
 
     setInterval(() => {
@@ -25,17 +25,18 @@ function initCountdownTimer() {
             totalSeconds--;
         }
 
-        const hrs = Math.floor(totalSeconds / 3600);
+        const days = Math.floor(totalSeconds / 86400);
+        const hrs = Math.floor((totalSeconds % 86400) / 3600);
         const mins = Math.floor((totalSeconds % 3600) / 60);
         const secs = totalSeconds % 60;
 
+        if (daysEl) daysEl.textContent = String(days).padStart(2, '0');
         const minsStr = String(mins).padStart(2, '0');
         const secsStr = String(secs).padStart(2, '0');
 
         if (hoursEl) hoursEl.textContent = String(hrs).padStart(2, '0');
         if (minutesEl) minutesEl.textContent = minsStr;
         if (secondsEl) secondsEl.textContent = secsStr;
-        if (stickyMins) stickyMins.textContent = minsStr;
         if (stickySecs) stickySecs.textContent = secsStr;
     }, 1000);
 }
