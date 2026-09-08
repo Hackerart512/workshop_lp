@@ -6,8 +6,31 @@ document.addEventListener('DOMContentLoaded', () => {
     initCountdownTimer();
     initCounterAnimation();
     initFaqAccordion();
-
+    initStickyTimerText();
+    initCheckoutTriggers();
 });
+
+function initCheckoutTriggers() {
+    const checkoutBtns = document.querySelectorAll('.trigger-checkout');
+    checkoutBtns.forEach(btn => {
+        btn.addEventListener('click', (e) => {
+            e.preventDefault();
+            window.location.href = 'https://paywebinar.fitumy.in';
+        });
+    });
+}
+
+function initStickyTimerText() {
+    const stickyTimerEl = document.querySelector('.sticky-timer-text');
+    if (!stickyTimerEl) return;
+
+    const today = new Date();
+    const monthName = today.toLocaleDateString('en-US', { month: 'long' });
+    const dayDate = today.getDate();
+    const year = today.getFullYear();
+
+    stickyTimerEl.textContent = `Deadline: ${monthName} ${dayDate}, ${year}`;
+}
 
 function initCountdownTimer() {
     let totalSeconds = 14 * 60 + 52;

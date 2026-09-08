@@ -338,6 +338,7 @@ body {
     background: white;
     padding: 17px;
     border-radius: 18px;
+    height: 100%;
 }
 
 .urgency-red-text {
@@ -475,9 +476,9 @@ body {
 
 .test-video-thumb {
     position: relative;
-    height: 150px;
     background: #111;
     cursor: pointer;
+    height: 100%;
 }
 
 .test-video-thumb img {
@@ -831,6 +832,210 @@ body {
 }
 
 /* ==========================================================================
+   6B. GUT TRANSFORMATION BEFORE & AFTER SECTION
+   ========================================================================== */
+.gut-transform-section {
+    background: #ffffff;
+    border: 1px solid #e2ece6;
+}
+
+.gut-comparison-container {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 24px;
+    position: relative;
+    margin-top: 24px;
+    align-items: stretch;
+}
+
+.gut-panel {
+    border-radius: 16px;
+    padding: 24px 20px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.gut-panel:hover {
+    transform: translateY(-2px);
+}
+
+/* Problem Panel (Left) */
+.gut-panel-problem {
+    background: linear-gradient(180deg, #fff5f5 0%, #ffffff 100%);
+    border: 1.5px solid #fecaca;
+    box-shadow: 0 4px 16px rgba(220, 38, 38, 0.05);
+}
+
+/* Solution Panel (Right) */
+.gut-panel-solution {
+    background: linear-gradient(180deg, #f0fdf4 0%, #ffffff 100%);
+    border: 2px solid #86efac;
+    box-shadow: 0 8px 24px rgba(34, 197, 94, 0.12);
+}
+
+.gut-panel-header {
+    margin-bottom: 12px;
+}
+
+.gut-panel-badge {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-family: var(--font-heading);
+    font-size: 1.3rem;
+    font-weight: 800;
+    margin-bottom: 6px;
+}
+
+.problem-badge {
+    color: #991b1b;
+}
+
+.solution-badge {
+    color: #166534;
+}
+
+.gut-panel-sublabel {
+    display: inline-block;
+    font-size: 0.76rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    padding: 4px 12px;
+    border-radius: 9999px;
+}
+
+.problem-sublabel {
+    background: #fee2e2;
+    color: #991b1b;
+}
+
+.solution-sublabel {
+    background: #dcfce7;
+    color: #15803d;
+}
+
+.gut-panel-desc {
+    font-size: 0.9rem;
+    color: var(--text-muted);
+    line-height: 1.45;
+    margin-bottom: 16px;
+    font-weight: 500;
+}
+
+/* Visual Box */
+.gut-visual-box {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 12px 14px;
+    border-radius: 12px;
+    margin-bottom: 18px;
+    font-size: 0.85rem;
+    line-height: 1.35;
+}
+
+.problem-visual {
+    background: #fef2f2;
+    border: 1px dashed #fca5a5;
+    color: #7f1d1d;
+}
+
+.solution-visual {
+    background: #ecfdf5;
+    border: 1px dashed #6ee7b7;
+    color: #064e3b;
+}
+
+.visual-status-icon {
+    font-size: 1.35rem;
+    flex-shrink: 0;
+}
+
+/* Tags List */
+.gut-tags-list {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    margin-bottom: 8px;
+}
+
+.gut-tag-item {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 12px 14px;
+    border-radius: 12px;
+    font-size: 0.88rem;
+    font-weight: 600;
+    line-height: 1.35;
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.gut-tag-item:hover {
+    transform: translateX(4px);
+}
+
+.tag-problem {
+    background: #ffffff;
+    border: 1px solid #fee2e2;
+    color: #991b1b;
+    box-shadow: 0 2px 6px rgba(220, 38, 38, 0.04);
+}
+
+.tag-solution {
+    background: #ffffff;
+    border: 1px solid #d1fae5;
+    color: #065f46;
+    box-shadow: 0 2px 6px rgba(34, 197, 94, 0.06);
+}
+
+.tag-icon {
+    font-size: 1.15rem;
+    flex-shrink: 0;
+}
+
+/* VS Divider */
+.gut-vs-divider {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 40px;
+    height: 40px;
+    background: var(--primary-dark-green);
+    color: #ffffff;
+    font-family: var(--font-heading);
+    font-weight: 800;
+    font-size: 0.85rem;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 4px 14px rgba(0, 0, 0, 0.18);
+    z-index: 5;
+    border: 3px solid #ffffff;
+}
+
+/* CTA Container */
+.gut-cta-container {
+    margin-top: 28px;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
+}
+
+.gut-cta-subtext {
+    font-size: 0.82rem;
+    color: var(--text-muted);
+    font-weight: 600;
+}
+
+/* ==========================================================================
    11. FAQ ACCORDION SECTION (2 COLUMNS)
    ========================================================================== */
 .faq-container-grid {
@@ -928,8 +1133,13 @@ body {
     max-width: 1078px;
     left: 50%;
     transform: translatex(-50%);
-    border-radius: 123px;
-    bottom: 12px;
+    border-radius: 47px 46px 0px 0px;
+    bottom: 0px;
+}
+
+iframe {
+    width: 100%;
+    height: 100%;
 }
 
 .bottom-btn {
@@ -939,6 +1149,7 @@ body {
     border: none;
     font-size: 18px;
     font-weight: 600;
+    cursor: pointer;
 }
 
 .sticky-inner {
@@ -954,7 +1165,7 @@ body {
     font-family: var(--font-heading);
     font-size: 18px;
     font-weight: 700;
-    background: #1e7d3a;
+    background: #314528;
     padding: 18px 34px;
     border-radius: 100px;
 }
@@ -1102,8 +1313,17 @@ body {
     .anatomy-grid,
     .paths-grid,
     .mentor-grid,
-    .faq-container-grid {
+    .faq-container-grid,
+    .gut-comparison-container {
         grid-template-columns: 1fr;
+    }
+
+    .gut-vs-divider {
+        position: relative;
+        top: auto;
+        left: auto;
+        transform: none;
+        margin: -8px auto;
     }
 
     .stats-grid {
@@ -1115,13 +1335,69 @@ body {
         grid-template-columns: 1fr;
     }
 
+    .gut-panel-header {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+    }
+
+    .gut-panel-desc {
+        text-align: center;
+    }
+
     .testimonials-grid {
-        grid-template-columns: 1fr;
+        display: flex;
+        flex-wrap: nowrap;
+        overflow-x: auto;
+        overflow-y: hidden;
+        scroll-snap-type: x mandatory;
+        -webkit-overflow-scrolling: touch;
+        gap: 14px;
+        margin-left: -14px;
+        margin-right: -14px;
+        padding-left: 14px;
+        padding-right: 14px;
+        padding-bottom: 10px;
+        scrollbar-width: none;
+        -ms-overflow-style: none;
+    }
+
+    .testimonials-grid::-webkit-scrollbar {
+        display: none;
+    }
+
+    .testimonial-item {
+        flex: 0 0 76%;
+        min-width: 76%;
+        scroll-snap-align: start;
     }
 
     .bonuses-grid {
-        grid-template-columns: repeat(2, 1fr);
-        gap: 10px;
+        display: flex;
+        flex-wrap: nowrap;
+        overflow-x: auto;
+        overflow-y: hidden;
+        scroll-snap-type: x mandatory;
+        -webkit-overflow-scrolling: touch;
+        gap: 12px;
+        margin-left: -14px;
+        margin-right: -14px;
+        padding-left: 14px;
+        padding-right: 14px;
+        padding-bottom: 10px;
+        scrollbar-width: none;
+        -ms-overflow-style: none;
+    }
+
+    .bonuses-grid::-webkit-scrollbar {
+        display: none;
+    }
+
+    .bonus-card {
+        flex: 0 0 72%;
+        min-width: 72%;
+        scroll-snap-align: start;
     }
 
     .sticky-inner {
@@ -1130,13 +1406,18 @@ body {
     }
 
     .sticky-timer-text {
-            font-size: 15px;
-                text-align: center;
-                padding: 9px 18px;
+        font-size: 15px;
+        text-align: center;
+        padding: 9px 18px;
     }
 
     .btn-green {
         font-size: 0.98rem;
+        padding: 14px 18px;
+    }
+
+    .bottom-btn {
+        font-size: 15px;
         padding: 14px 18px;
     }
 }
@@ -1148,10 +1429,6 @@ body {
 
     .stat-val {
         font-size: 1.5rem;
-    }
-
-    .bonuses-grid {
-        grid-template-columns: 1fr;
     }
 }
 
@@ -1221,19 +1498,21 @@ body {
 
 @media (max-width: 768px) {
 
-    #click-here{
+    #click-here {
         display: none;
     }
+
     .site-footer {
         padding: 35px 20px 25px;
     }
 
-        .click-here-wrapper{
-            width: 100%;
-        }
-                .banner-cta-card h2 {
-                    font-size: 24px;
-                }
+    .click-here-wrapper {
+        width: 100%;
+    }
+
+    .banner-cta-card h2 {
+        font-size: 24px;
+    }
 
     .site-footer-disclaimer {
         font-size: 12px;
