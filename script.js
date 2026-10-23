@@ -10,15 +10,47 @@ document.addEventListener('DOMContentLoaded', () => {
     initCheckoutTriggers();
 });
 
-function initCheckoutTriggers() {
-    const checkoutBtns = document.querySelectorAll('.trigger-checkout');
-    checkoutBtns.forEach(btn => {
-        btn.addEventListener('click', (e) => {
-            e.preventDefault();
-            window.location.href = 'https://paywebinar.fitumy.in';
+// function initCheckoutTriggers() {
+//     const checkoutBtns = document.querySelectorAll('.trigger-checkout');
+//     checkoutBtns.forEach(btn => {
+//         btn.addEventListener('click', (e) => {
+//             e.preventDefault();
+//             window.location.href = 'https://paywebinar.fitumy.in';
+//         });
+//     });
+// }
+
+(function () {
+    const CHECKOUT_URL = 'https://paywebinar.fitumy.in';
+
+    function buildCheckoutUrl() {
+        const checkout = new URL(CHECKOUT_URL);
+        const params = new URLSearchParams(window.location.search);
+
+        params.forEach(function (value, key) {
+            checkout.searchParams.set(key, value);
         });
+
+        return checkout.toString();
+    }
+
+    // Handle checkout buttons
+    document.addEventListener('click', function (e) {
+        const btn = e.target.closest('.trigger-checkout');
+
+        if (btn) {
+            e.preventDefault();
+            window.location.href = buildCheckoutUrl();
+        }
     });
-}
+
+    // Update checkout links
+    document.querySelectorAll('a[href*="paywebinar.fitumy.in"]')
+        .forEach(function (link) {
+            link.href = buildCheckoutUrl();
+        });
+})();
+
 
 function initStickyTimerText() {
     const stickyTimerEl = document.querySelector('.sticky-timer-text');
