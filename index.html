@@ -805,6 +805,15 @@
     </div>
 
 
+    <script>
+        (function () {
+            var q = window.location.search;
+            if (!q) return;
+            document.querySelectorAll('a[href^="https://paywebinar.fitumy.in"]').forEach(function (a) {
+                a.href = a.href.split("?")[0] + q;
+            });
+        })();
+    </script>
 
 
     <script src="script.js?v=20261004"></script>
